@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 
-import Range from "@/app/components/range/Range";
-import SectionTitle from "@/app/components/section-title/SectionTitle";
+import RangeSection from "@/app/components/range-section/RangeSection";
 import {
 	getRangeLimits,
 	getRangeValues,
@@ -13,29 +12,16 @@ export default async function ExercisePage({
 	params: Promise<{ exerciseId: string }>;
 }) {
 	const { exerciseId } = await params;
+	const sectionTitle: string = `Exercise ${exerciseId}`;
 
 	switch (exerciseId) {
 		case "1": {
 			const { min, max } = await getRangeLimits();
-			return (
-				<div className="p-6">
-					<SectionTitle title={`Exercise ${exerciseId}`} />
-					<div className="mt-8">
-						<Range min={min} max={max} />
-					</div>
-				</div>
-			);
+			return <RangeSection title={sectionTitle} min={min} max={max} />;
 		}
 		case "2": {
 			const { rangeValues } = await getRangeValues();
-			return (
-				<div className="p-6">
-					<SectionTitle title={`Exercise ${exerciseId}`} />
-					<div className="mt-8">
-						<Range values={rangeValues} />
-					</div>
-				</div>
-			);
+			return <RangeSection title={sectionTitle} values={rangeValues} />;
 		}
 		default:
 			notFound();
