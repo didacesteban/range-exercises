@@ -1,8 +1,8 @@
-export interface ExerciseOneResponse {
+export interface RangeLimitsResponse {
 	min: number;
 	max: number;
 }
 
-export interface ExerciseTwoResponse {
+export interface RangeValuesResponse {
 	rangeValues: number[];
 }
