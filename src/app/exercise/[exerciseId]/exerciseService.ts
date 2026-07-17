@@ -1,13 +1,5 @@
-import { headers } from "next/headers";
-
 import type { RangeLimitsResponse, RangeValuesResponse } from "@/app/api/types";
-
-async function getBaseUrl() {
-	const headersList = await headers();
-	const host = headersList.get("host");
-	const protocol = host?.startsWith("localhost") ? "http" : "https";
-	return `${protocol}://${host}`;
-}
+import { getBaseUrl } from "@/lib/getBaseUrl";
 
 export async function getRangeLimits(): Promise<RangeLimitsResponse> {
 	const baseUrl = await getBaseUrl();
