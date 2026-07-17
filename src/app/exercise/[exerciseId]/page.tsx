@@ -1,10 +1,7 @@
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
-import type {
-	ExerciseOneResponse,
-	ExerciseTwoResponse,
-} from "@/app/api/types";
+import type { ExerciseOneResponse, ExerciseTwoResponse } from "@/app/api/types";
 import Range from "@/app/components/range/Range";
 
 async function getBaseUrl() {

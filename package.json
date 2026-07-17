@@ -10,7 +10,9 @@
 		"lint": "biome check",
 		"format": "biome format --write",
 		"test:e2e": "playwright test",
-		"test:e2e:ui": "playwright test --ui"
+		"test:e2e:ui": "playwright test --ui",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"keywords": [],
 	"author": "",
@@ -25,10 +27,14 @@
 		"@biomejs/biome": "^2.5.4",
 		"@playwright/test": "^1.61.1",
 		"@tailwindcss/postcss": "^4.3.3",
+		"@testing-library/react": "^16.3.2",
 		"@types/node": "^26.1.1",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^6.0.3",
+		"jsdom": "^29.1.1",
 		"tailwindcss": "^4.3.3",
-		"typescript": "^6.0.3"
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.10"
 	}
 }
