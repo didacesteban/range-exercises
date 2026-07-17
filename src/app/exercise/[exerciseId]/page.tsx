@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import type { ExerciseOneResponse, ExerciseTwoResponse } from "@/app/api/types";
 import Range from "@/app/components/range/Range";
+import SectionTitle from "@/app/components/section-title/SectionTitle";
 
 async function getBaseUrl() {
 	const headersList = await headers();
@@ -27,7 +28,7 @@ export default async function ExercisePage({
 			const { min, max } = (await res.json()) as ExerciseOneResponse;
 			return (
 				<div className="p-6">
-					<h2>Exercise 1</h2>
+					<SectionTitle title="Exercise 1"/>
 					<div className="mt-8">
 						<Range min={min} max={max} />
 					</div>
@@ -41,7 +42,7 @@ export default async function ExercisePage({
 			const { rangeValues } = (await res.json()) as ExerciseTwoResponse;
 			return (
 				<div className="p-6">
-					<h2>Exercise 2</h2>
+					<SectionTitle title="Exercise 2"/>
 					<div className="mt-8">
 						<Range values={rangeValues} />
 					</div>
