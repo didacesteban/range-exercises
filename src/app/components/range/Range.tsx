@@ -27,7 +27,7 @@ export default function Range(props: IRangeViewModelParams) {
 	} = useRangeViewModel(props);
 
 	return (
-		<div className="w-full max-w-xl">
+		<div className="w-full">
 			<div
 				ref={trackRef}
 				data-testid="range-track"
@@ -99,7 +99,7 @@ export default function Range(props: IRangeViewModelParams) {
 						data-testid="range-label-min"
 						onClick={() => startEditing("min")}
 					>
-						Desde {minValueLabel}
+						From {minValueLabel}
 					</button>
 				)}
 				{editing === "max" ? (
@@ -123,7 +123,7 @@ export default function Range(props: IRangeViewModelParams) {
 						data-testid="range-label-max"
 						onClick={() => startEditing("max")}
 					>
-						Hasta {maxValueLabel}
+						To {maxValueLabel}
 					</button>
 				)}
 			</div>

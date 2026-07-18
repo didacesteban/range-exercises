@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import MenuLink from "@/app/components/menu-link/MenuLink";
 
 export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
 	return (
 		<header className="grid grid-cols-3 items-center border-b border-gray-200 px-6 py-3">
 			<div className="justify-self-start">
 				<nav className="hidden gap-6 text-xs font-medium uppercase tracking-widest text-gray-800 md:flex">
-					<Link href="/exercise/1">Exercise 1</Link>
-					<Link href="/exercise/2">Exercise 2</Link>
+					<MenuLink href="/exercise/1" title="Exercise 1" />
+					<MenuLink href="/exercise/2" title="Exercise 2" />
 				</nav>
 				<button
 					type="button"

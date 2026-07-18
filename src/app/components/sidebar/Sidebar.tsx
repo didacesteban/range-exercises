@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import MenuLink from "@/app/components/menu-link/MenuLink";
 
 export default function Sidebar({
 	isOpen,
@@ -25,12 +25,8 @@ export default function Sidebar({
 				}`}
 			>
 				<nav className="flex flex-col gap-6 text-xs font-medium uppercase tracking-widest text-gray-800">
-					<Link href="/exercise/1" onClick={onClose}>
-						Exercise 1
-					</Link>
-					<Link href="/exercise/2" onClick={onClose}>
-						Exercise 2
-					</Link>
+					<MenuLink href="/exercise/1" title="Exercise 1" onClick={onClose} />
+					<MenuLink href="/exercise/2" title="Exercise 2" onClick={onClose} />
 				</nav>
 			</aside>
 		</div>
