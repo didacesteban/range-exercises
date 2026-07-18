@@ -79,8 +79,8 @@ export default function HomePage() {
 				<FooterLink href="https://github.com/didacesteban/range-exercises">
 					GitHub Repository
 				</FooterLink>
-				<FooterLink href="https://github.com/didacesteban/range-exercises/blob/main/README.md">
-					Architecture README
+				<FooterLink href="https://range-storybook.vercel.app/?path=/story/range-range--continuous">
+					Storybook Documentation
 				</FooterLink>
 			</footer>
 		</main>
