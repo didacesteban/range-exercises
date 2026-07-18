@@ -12,7 +12,7 @@ export default function AppWrapper({ children }: { children: ReactNode }) {
 		<>
 			<Header onMenuClick={() => setIsSidebarOpen(true)} />
 			<Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-			<main className="w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+			<main className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 				{children}
 			</main>
 		</>
