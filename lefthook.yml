@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint
+      run: npx biome check .
+    - name: typecheck
+      run: npx tsc --noEmit
+    - name: test
+      run: npx vitest run
+
+pre-push:
+  jobs:
+    - name: e2e
+      run: npx playwright test

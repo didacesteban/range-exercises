@@ -9,6 +9,7 @@ A small Next.js app implementing a dual-handle range/slider component in two mod
 - Vitest + React Testing Library for unit tests
 - Playwright for e2e tests
 - Biome for linting/formatting
+- Lefthook for git hooks
 
 ## Getting started
 
@@ -27,3 +28,4 @@ npm run test:e2e
 - **Mocked HTTP API.** `src/app/api/range-limits` and `src/app/api/range-values` are Next.js route handlers standing in for a real backend, returning `{ min, max }` and `{ rangeValues }` respectively — named after the shape of the data they return rather than which exercise consumes them. The exercise page fetches them server-side rather than hardcoding the values, to demonstrate consuming an external data source.
 - **Shared response types.** `src/app/api/types.ts` types the mocked responses so the route handlers and the page consuming them share one contract instead of drifting independently.
 - **Colocated unit tests.** `useRangeViewModel.test.ts` lives next to `useRangeViewModel.ts` in `src/app/components/range/`, so a test never gets orphaned when the feature it covers is renamed or moved.
+- **Git hooks via Lefthook.** `lefthook.yml` runs Biome, `tsc --noEmit`, and the unit tests on `pre-commit`, and the full Playwright suite on `pre-push`. e2e is kept out of `pre-commit` since it needs to boot a dev server and a real browser, which is too slow for every commit.

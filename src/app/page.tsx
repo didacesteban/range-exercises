@@ -55,7 +55,9 @@ export default function HomePage() {
 						<strong>TypeScript</strong>. Powered by <strong>Biome</strong> for
 						lightning-fast linting/formatting, <strong>Vitest</strong> for
 						co-located unit tests, and <strong>Playwright</strong> for
-						end-to-end integration flows.
+						end-to-end integration flows. <strong>Lefthook</strong> git hooks
+						run linting, type-checking, and unit tests on every commit, and the
+						full e2e suite before every push.
 					</p>
 				</div>
 			</section>
