@@ -13,7 +13,9 @@
 		"test:e2e:ui": "playwright test --ui",
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"prepare": "lefthook install"
+		"prepare": "lefthook install",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
 	},
 	"keywords": [],
 	"author": "",
@@ -27,6 +29,10 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.4",
 		"@playwright/test": "^1.61.1",
+		"@storybook/addon-a11y": "^10.5.2",
+		"@storybook/addon-docs": "^10.5.2",
+		"@storybook/addon-themes": "^10.5.2",
+		"@storybook/nextjs-vite": "^10.5.2",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@testing-library/react": "^16.3.2",
 		"@types/node": "^26.1.1",
@@ -35,8 +41,10 @@
 		"@vitejs/plugin-react": "^6.0.3",
 		"jsdom": "^29.1.1",
 		"lefthook": "^2.1.10",
+		"storybook": "^10.5.2",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^6.0.3",
+		"vite": "^8.1.5",
 		"vitest": "^4.1.10"
 	}
 }

@@ -10,6 +10,7 @@ A small Next.js app implementing a dual-handle range/slider component in two mod
 - Playwright for e2e tests
 - Biome for linting/formatting
 - Lefthook for git hooks
+- Storybook for isolated component development
 
 ## Getting started
 
@@ -19,6 +20,7 @@ npm run dev         # http://localhost:8080
 npm run build
 npm run test        # unit tests
 npm run test:e2e
+npm run storybook   # http://localhost:6006
 ```
 
 ## Project decisions
@@ -29,3 +31,4 @@ npm run test:e2e
 - **Shared response types.** `src/app/api/types.ts` types the mocked responses so the route handlers and the page consuming them share one contract instead of drifting independently.
 - **Colocated unit tests.** `useRangeViewModel.test.ts` lives next to `useRangeViewModel.ts` in `src/app/components/range/`, so a test never gets orphaned when the feature it covers is renamed or moved.
 - **Git hooks via Lefthook.** `lefthook.yml` runs Biome, `tsc --noEmit`, and the unit tests on `pre-commit`, and the full Playwright suite on `pre-push`. e2e is kept out of `pre-commit` since it needs to boot a dev server and a real browser, which is too slow for every commit.
+- **Storybook for component isolation.** Every presentational component under `src/app/components/` has a colocated `*.stories.tsx`, letting `Range`'s continuous/discrete modes and all the small building blocks be developed and reviewed independently of the app's routes. `.storybook/preview.tsx` imports the real `globals.css` and wires a light/dark toolbar toggle using the same `.dark`-class mechanism as the actual app, so stories always match production styling.

@@ -63,7 +63,8 @@ export default function HomePage() {
 						co-located unit tests, and <strong>Playwright</strong> for
 						end-to-end integration flows. <strong>Lefthook</strong> git hooks
 						run linting, type-checking, and unit tests on every commit, and the
-						full e2e suite before every push.
+						full e2e suite before every push. Every component is also documented
+						in isolation with <strong>Storybook</strong>.
 					</p>
 				</div>
 			</section>
