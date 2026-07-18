@@ -38,10 +38,16 @@ export default function HomePage() {
 						Clean Architecture & MVVM
 					</h3>
 					<p className="text-gray-600 leading-relaxed">
-						The UI is deliberately decoupled from its business rules. By using a
-						strict <code>IRangeViewModel</code> contract, all dragging math,
-						keyboard accessibility, and validations are fully abstracted and
-						standalone-testable outside of React.
+						The <strong>UI</strong> is deliberately <strong>decoupled</strong>{" "}
+						from its business rules. By using a strict{" "}
+						<strong>
+							<code>IRangeViewModel</code>
+						</strong>{" "}
+						contract, all dragging math, keyboard accessibility, and validations
+						are fully abstracted and standalone-testable outside of React. Data
+						fetching is likewise isolated in its own service layer, with
+						colocated <strong>unit tests</strong>
+						validating each piece of logic independently.
 					</p>
 				</div>
 
