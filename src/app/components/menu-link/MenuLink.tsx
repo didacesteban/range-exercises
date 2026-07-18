@@ -17,8 +17,8 @@ export default function MenuLink({ href, title, onClick }: MenuLinkProps) {
 		<Link
 			href={href}
 			onClick={onClick}
-			className={`border-b pb-0.5 transition-colors hover:border-gray-800 ${
-				isActive ? "border-gray-800" : "border-transparent"
+			className={`border-b pb-0.5 transition-colors hover:border-gray-800 dark:hover:border-gray-100 ${
+				isActive ? "border-gray-800 dark:border-gray-100" : "border-transparent"
 			}`}
 		>
 			{title}

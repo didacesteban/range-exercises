@@ -33,9 +33,9 @@ export default function Range(props: IRangeViewModelParams) {
 				data-testid="range-track"
 				className="relative flex h-6 items-center"
 			>
-				<div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gray-300" />
+				<div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gray-300 dark:bg-gray-700" />
 				<div
-					className="absolute top-1/2 h-px -translate-y-1/2 bg-black"
+					className="absolute top-1/2 h-px -translate-y-1/2 bg-black dark:bg-white"
 					style={{ left: `${minPercent}%`, right: `${100 - maxPercent}%` }}
 				/>
 				<button
@@ -52,7 +52,7 @@ export default function Range(props: IRangeViewModelParams) {
 						startDragging("min");
 					}}
 					onKeyDown={handleKeyDown("min")}
-					className={`absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 touch-none bg-black transition-transform hover:scale-150 focus-visible:scale-150 focus-visible:outline-none ${
+					className={`absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 touch-none bg-black transition-transform hover:scale-150 focus-visible:scale-150 focus-visible:outline-none dark:bg-white ${
 						dragging === "min" ? "cursor-grabbing scale-150" : "cursor-grab"
 					}`}
 					style={{ left: `${minPercent}%` }}
@@ -71,13 +71,13 @@ export default function Range(props: IRangeViewModelParams) {
 						startDragging("max");
 					}}
 					onKeyDown={handleKeyDown("max")}
-					className={`absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 touch-none bg-black transition-transform hover:scale-150 focus-visible:scale-150 focus-visible:outline-none ${
+					className={`absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 touch-none bg-black transition-transform hover:scale-150 focus-visible:scale-150 focus-visible:outline-none dark:bg-white ${
 						dragging === "max" ? "cursor-grabbing scale-150" : "cursor-grab"
 					}`}
 					style={{ left: `${maxPercent}%` }}
 				/>
 			</div>
-			<div className="mt-3 flex items-center justify-between text-xs font-medium uppercase tracking-widest text-gray-800">
+			<div className="mt-3 flex items-center justify-between text-xs font-medium uppercase tracking-widest text-gray-800 dark:text-gray-100">
 				{editing === "min" ? (
 					<input
 						ref={editInputRef}
@@ -91,7 +91,7 @@ export default function Range(props: IRangeViewModelParams) {
 							if (event.key === "Enter") commitEdit();
 							if (event.key === "Escape") cancelEditing();
 						}}
-						className="w-20 border-b border-gray-800 bg-transparent outline-none"
+						className="w-20 border-b border-gray-800 bg-transparent outline-none dark:border-gray-100"
 					/>
 				) : (
 					<button
@@ -115,7 +115,7 @@ export default function Range(props: IRangeViewModelParams) {
 							if (event.key === "Enter") commitEdit();
 							if (event.key === "Escape") cancelEditing();
 						}}
-						className="w-20 border-b border-gray-800 bg-transparent text-right outline-none"
+						className="w-20 border-b border-gray-800 bg-transparent text-right outline-none dark:border-gray-100"
 					/>
 				) : (
 					<button

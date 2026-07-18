@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import MenuLink from "@/app/components/menu-link/MenuLink";
+import ThemeToggle from "@/app/components/theme-toggle/ThemeToggle";
 
 export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
 	return (
-		<header className="grid grid-cols-3 items-center border-b border-gray-200 px-6 py-3">
+		<header className="grid grid-cols-3 items-center border-b border-gray-200 px-6 py-3 dark:border-gray-800">
 			<div className="justify-self-start">
-				<nav className="hidden gap-6 text-xs font-medium uppercase tracking-widest text-gray-800 md:flex">
+				<nav className="hidden gap-6 text-xs font-medium uppercase tracking-widest text-gray-800 md:flex dark:text-gray-100">
 					<MenuLink href="/exercise/1" title="Exercise 1" />
 					<MenuLink href="/exercise/2" title="Exercise 2" />
 				</nav>
@@ -15,7 +16,7 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
 					type="button"
 					onClick={onMenuClick}
 					aria-label="Abrir menú"
-					className="md:hidden"
+					className="text-gray-800 md:hidden dark:text-gray-100"
 				>
 					<svg
 						width="24"
@@ -38,7 +39,9 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
 			>
 				RANGE
 			</Link>
-			<div />
+			<div className="justify-self-end">
+				<ThemeToggle />
+			</div>
 		</header>
 	);
 }

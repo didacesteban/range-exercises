@@ -3,9 +3,9 @@ import FooterLink from "@/app/components/footer-link/FooterLink";
 
 export default function HomePage() {
 	return (
-		<main className="font-sans text-gray-800 antialiased">
-			<header className="flex justify-center border-b border-gray-200 pb-8 mb-8">
-				<p className="text-lg text-gray-600 max-w-2xl text-center">
+		<main className="font-sans text-gray-800 antialiased dark:text-gray-100">
+			<header className="flex justify-center border-b border-gray-200 pb-8 mb-8 dark:border-gray-800">
+				<p className="text-lg text-gray-600 max-w-2xl text-center dark:text-gray-400">
 					A production-ready implementation of a dual-handle range slider, built
 					to demonstrate modern frontend architecture, robust toolchains, and
 					strict testability.
@@ -13,7 +13,7 @@ export default function HomePage() {
 			</header>
 
 			<section className="mb-12">
-				<h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">
+				<h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4 dark:text-gray-500">
 					Explore the Exercises
 				</h2>
 				<div className="grid sm:grid-cols-2 gap-4">
@@ -32,12 +32,12 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			<section className="grid md:grid-cols-2 gap-8 text-sm border-t border-gray-100 pt-8">
+			<section className="grid md:grid-cols-2 gap-8 text-sm border-t border-gray-100 pt-8 dark:border-gray-800">
 				<div>
-					<h3 className="font-semibold text-gray-900 mb-2">
+					<h3 className="font-semibold text-gray-900 mb-2 dark:text-white">
 						Clean Architecture & MVVM
 					</h3>
-					<p className="text-gray-600 leading-relaxed">
+					<p className="text-gray-600 leading-relaxed dark:text-gray-400">
 						The <strong>UI</strong> is deliberately <strong>decoupled</strong>{" "}
 						from its business rules. By using a strict{" "}
 						<strong>
@@ -52,10 +52,10 @@ export default function HomePage() {
 				</div>
 
 				<div>
-					<h3 className="font-semibold text-gray-900 mb-2">
+					<h3 className="font-semibold text-gray-900 mb-2 dark:text-white">
 						Modern Tooling Stack
 					</h3>
-					<p className="text-gray-600 leading-relaxed">
+					<p className="text-gray-600 leading-relaxed dark:text-gray-400">
 						Configured manually from scratch using{" "}
 						<strong>Next.js (App Router)</strong> and{" "}
 						<strong>TypeScript</strong>. Powered by <strong>Biome</strong> for
@@ -68,7 +68,7 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			<footer className="mt-16 pt-6 border-t border-gray-200 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-gray-400">
+			<footer className="mt-16 pt-6 border-t border-gray-200 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-gray-400 dark:border-gray-800 dark:text-gray-500">
 				<span>
 					Developed by{" "}
 					<FooterLink href="https://www.linkedin.com/in/didac-esteban-10033b67/">

@@ -20,11 +20,11 @@ export default function Sidebar({
 				/>
 			)}
 			<aside
-				className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-gray-200 bg-white px-6 py-5 transition-transform ${
+				className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-gray-200 bg-white px-6 py-5 transition-transform dark:border-gray-800 dark:bg-gray-900 ${
 					isOpen ? "translate-x-0" : "-translate-x-full"
 				}`}
 			>
-				<nav className="flex flex-col gap-6 text-xs font-medium uppercase tracking-widest text-gray-800">
+				<nav className="flex flex-col gap-6 text-xs font-medium uppercase tracking-widest text-gray-800 dark:text-gray-100">
 					<MenuLink href="/exercise/1" title="Exercise 1" onClick={onClose} />
 					<MenuLink href="/exercise/2" title="Exercise 2" onClick={onClose} />
 				</nav>

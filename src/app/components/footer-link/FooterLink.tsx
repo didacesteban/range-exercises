@@ -11,7 +11,7 @@ export default function FooterLink({ href, children }: FooterLinkProps) {
 			href={href}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="hover:text-gray-600 underline transition-colors"
+			className="hover:text-gray-600 underline transition-colors dark:hover:text-gray-300"
 		>
 			{children}
 		</a>

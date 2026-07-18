@@ -15,7 +15,7 @@ export default function RangeSection({
 	return (
 		<div className="p-6">
 			<SectionTitle title={title} />
-			<p className="mt-2 text-sm text-gray-600 leading-relaxed">
+			<p className="mt-2 text-sm text-gray-600 leading-relaxed dark:text-gray-400">
 				{description}
 			</p>
 			<div className="mt-8">
