@@ -23,6 +23,15 @@ npm run test:e2e
 npm run storybook   # http://localhost:6006
 ```
 
+## Agents
+
+This repo defines two Claude Code subagents under `.claude/agents/`, meant to run proactively after adding or changing code, before it's committed:
+
+- **`code-reviewer`** — reviews the current diff for correctness bugs, deviations from the project's MVVM/testing conventions (thin views, colocated tests/stories, dark-mode variants, shared API types), and missing test coverage.
+- **`a11y-reviewer`** — reviews components under `src/app/components/` for accessibility compliance: semantic HTML, ARIA roles/state on custom widgets, keyboard operability, accessible names/labeling, focus visibility, and color-contrast risk.
+
+Both start from `git diff` (falling back to a full review if nothing is staged/unstaged) and report findings grouped by severity with file:line references and suggested fixes.
+
 ## Project decisions
 
 - **Dynamic route with an id param.** Exercises are served from a single `src/app/exercise/[exerciseId]/page.tsx` route (`/exercise/1`, `/exercise/2`) instead of separate `exercise-1` / `exercise-2` routes, to demonstrate a dynamic route segment driving which variant of the page is rendered.
