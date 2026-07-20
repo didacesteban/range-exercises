@@ -42,7 +42,7 @@ export default function Range(props: IRangeViewModelParams) {
 					type="button"
 					role="slider"
 					data-testid="range-handle-min"
-					aria-label="Valor mínimo"
+					aria-label="Minimum value"
 					aria-valuemin={boundMin}
 					aria-valuemax={maxValue}
 					aria-valuenow={minValue}
@@ -61,7 +61,7 @@ export default function Range(props: IRangeViewModelParams) {
 					type="button"
 					role="slider"
 					data-testid="range-handle-max"
-					aria-label="Valor máximo"
+					aria-label="Maximum value"
 					aria-valuemin={minValue}
 					aria-valuemax={boundMax}
 					aria-valuenow={maxValue}

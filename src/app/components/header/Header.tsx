@@ -15,7 +15,7 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
 				<button
 					type="button"
 					onClick={onMenuClick}
-					aria-label="Abrir menú"
+					aria-label="Open menu"
 					className="text-gray-800 md:hidden dark:text-gray-100"
 				>
 					<svg

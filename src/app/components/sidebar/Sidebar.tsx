@@ -14,7 +14,7 @@ export default function Sidebar({
 			{isOpen && (
 				<button
 					type="button"
-					aria-label="Cerrar menú"
+					aria-label="Close menu"
 					onClick={onClose}
 					className="fixed inset-0 z-40 bg-black/40"
 				/>

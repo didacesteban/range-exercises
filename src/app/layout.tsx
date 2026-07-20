@@ -21,7 +21,7 @@ const themeInitScript = `
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang="es" suppressHydrationWarning>
+		<html lang="en" suppressHydrationWarning>
 			<head>
 				<script
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: runs before hydration to avoid a flash of the wrong theme
