@@ -26,8 +26,8 @@ next-env.d.ts
 # vercel
 .vercel
 
-# claude
-.claude/
+# claude (settings.json and agents/ are shared with the team; only local overrides are ignored)
+.claude/settings.local.json
 
 # misc
 .DS_Store
