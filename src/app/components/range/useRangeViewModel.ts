@@ -1,24 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
 	IRangeViewModel,
 	IRangeViewModelParams,
 	RangeHandle,
 } from "@/app/components/range/IRangeViewModel";
+import {
+	clamp,
+	createRangeModel,
+	nearestPoint,
+	resolveHandleValue,
+	stepPoint,
+} from "@/app/components/range/rangeModel";
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat("es-ES", {
 	style: "currency",
 	currency: "EUR",
 });
-
-function clamp(value: number, low: number, high: number) {
-	return Math.min(Math.max(value, low), high);
-}
-
-function nearestPoint(value: number, points: number[]) {
-	return points.reduce((closest, point) =>
-		Math.abs(point - value) < Math.abs(closest - value) ? point : closest,
-	);
-}
 
 export function useRangeViewModel({
 	min = 0,
@@ -28,10 +25,11 @@ export function useRangeViewModel({
 	defaultMinValue,
 	defaultMaxValue,
 }: IRangeViewModelParams): IRangeViewModel {
-	const points =
-		values && values.length > 0 ? [...values].sort((a, b) => a - b) : null;
-	const boundMin = points ? points[0] : min;
-	const boundMax = points ? points[points.length - 1] : max;
+	const model = useMemo(
+		() => createRangeModel({ min, max, values }),
+		[min, max, values],
+	);
+	const { points, boundMin, boundMax } = model;
 
 	const [minValue, setMinValue] = useState(() =>
 		points
@@ -79,23 +77,14 @@ export function useRangeViewModel({
 
 		const handlePointerMove = (event: PointerEvent) => {
 			const value = valueFromClientX(event.clientX);
-			if (points) {
-				const candidateIndex = points.indexOf(value);
-				if (dragging === "min") {
-					const maxIndex = points.indexOf(maxValueRef.current);
-					setMinValue(points[clamp(candidateIndex, 0, maxIndex)]);
-				} else {
-					const minIndex = points.indexOf(minValueRef.current);
-					setMaxValue(
-						points[clamp(candidateIndex, minIndex, points.length - 1)],
-					);
-				}
-				return;
-			}
 			if (dragging === "min") {
-				setMinValue(clamp(value, min, maxValueRef.current));
+				setMinValue(
+					resolveHandleValue(model, "min", value, maxValueRef.current),
+				);
 			} else {
-				setMaxValue(clamp(value, minValueRef.current, max));
+				setMaxValue(
+					resolveHandleValue(model, "max", value, minValueRef.current),
+				);
 			}
 		};
 		const stopDragging = () => setDragging(null);
@@ -109,31 +98,17 @@ export function useRangeViewModel({
 			window.removeEventListener("pointerup", stopDragging);
 			document.body.style.cursor = "";
 		};
-	}, [dragging, valueFromClientX, points, min, max]);
+	}, [dragging, valueFromClientX, model]);
 
 	const nudge = (handle: RangeHandle, direction: 1 | -1) => {
-		if (points) {
-			const currentIndex = points.indexOf(
-				handle === "min" ? minValue : maxValue,
-			);
-			const otherIndex = points.indexOf(handle === "min" ? maxValue : minValue);
-			if (handle === "min") {
-				setMinValue(points[clamp(currentIndex + direction, 0, otherIndex)]);
-			} else {
-				setMaxValue(
-					points[
-						clamp(currentIndex + direction, otherIndex, points.length - 1)
-					],
-				);
-			}
-			return;
-		}
-		const delta = direction * step;
-		if (handle === "min") {
-			setMinValue((current) => clamp(current + delta, min, maxValue));
-		} else {
-			setMaxValue((current) => clamp(current + delta, minValue, max));
-		}
+		const current = handle === "min" ? minValue : maxValue;
+		const other = handle === "min" ? maxValue : minValue;
+		const candidate = points
+			? stepPoint(points, current, direction)
+			: current + direction * step;
+		const resolved = resolveHandleValue(model, handle, candidate, other);
+		if (handle === "min") setMinValue(resolved);
+		else setMaxValue(resolved);
 	};
 
 	const handleKeyDown =
@@ -166,22 +141,10 @@ export function useRangeViewModel({
 		if (!editing) return;
 		const parsed = Number.parseFloat(draft.replace(",", "."));
 		if (!Number.isNaN(parsed)) {
-			if (points) {
-				const nearest = nearestPoint(parsed, points);
-				if (editing === "min") {
-					const maxIndex = points.indexOf(maxValue);
-					setMinValue(points[clamp(points.indexOf(nearest), 0, maxIndex)]);
-				} else {
-					const minIndex = points.indexOf(minValue);
-					setMaxValue(
-						points[clamp(points.indexOf(nearest), minIndex, points.length - 1)],
-					);
-				}
-			} else if (editing === "min") {
-				setMinValue(clamp(parsed, min, maxValue));
-			} else {
-				setMaxValue(clamp(parsed, minValue, max));
-			}
+			const other = editing === "min" ? maxValue : minValue;
+			const resolved = resolveHandleValue(model, editing, parsed, other);
+			if (editing === "min") setMinValue(resolved);
+			else setMaxValue(resolved);
 		}
 		setEditing(null);
 	};
