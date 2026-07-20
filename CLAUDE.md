@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # CLAUDE.md
 
 Conventions for this repo: a Next.js (App Router) + TypeScript app implementing a dual-handle range/slider component. See [README.md](README.md) for stack, setup, and project decisions.
