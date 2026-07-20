@@ -23,6 +23,10 @@ npm run test:e2e
 npm run storybook   # http://localhost:6006
 ```
 
+## Working with Claude Code
+
+[CLAUDE.md](CLAUDE.md) documents this project's conventions (architecture, testing, styling, accessibility, git hooks) and is loaded automatically at the start of every Claude Code session in this repo, so Claude follows them while writing code rather than only catching deviations afterward.
+
 ## Agents
 
 This repo defines two Claude Code subagents under `.claude/agents/`, meant to run proactively after adding or changing code, before it's committed:
